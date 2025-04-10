@@ -197,7 +197,7 @@
                     "name": "",
                     "id": "eb40bb66-4559-4dfa-9a2f-820438abb426",
                     "path": "<Keyboard>/space",
-                    "interactions": "Hold(duration=0.4,pressPoint=0.5)",
+                    "interactions": "Hold(duration=0.2,pressPoint=0.5)",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Jump",
