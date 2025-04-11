@@ -267,6 +267,7 @@ GameObject:
   - component: {fileID: 492364157}
   - component: {fileID: 492364156}
   - component: {fileID: 492364155}
+  - component: {fileID: 492364161}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -281,19 +282,19 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 492364154}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 678567931943ebc478ac8a597ec2c6b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
+  rb: {fileID: 492364158}
   moveSpeed: 8
+  horizontalMovement: 0
   jumpPower: 10
-  groundCheckPos: {fileID: 0}
+  groundCheckPos: {fileID: 609087914}
   groundCheckSize: {x: 0.5, y: 0.05}
   groundLayer:
-    serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
 --- !u!114 &492364156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -556,6 +557,19 @@ Transform:
   - {fileID: 609087914}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &492364161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 492364154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80fefaf615548d9448fa96cda52ed738, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stats: {fileID: 11400000, guid: 1f6797c22bca3e548a563ce104f2fbd9, type: 2}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
