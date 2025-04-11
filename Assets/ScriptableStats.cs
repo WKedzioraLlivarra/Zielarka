@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace TarodevController
+namespace Controller
 {
     [CreateAssetMenu]
     public class ScriptableStats : ScriptableObject
@@ -33,7 +33,7 @@ namespace TarodevController
         public float GroundingForce = -1.5f;
 
         [Tooltip("The detection distance for grounding and roof detection"), Range(0f, 0.5f)]
-        public float GrounderDistance = 0.05f;
+        public float GrounderDistance = 0.1f;
 
         [Header("JUMP")] [Tooltip("The immediate velocity applied when jumping")]
         public float JumpPower = 36;
@@ -52,5 +52,7 @@ namespace TarodevController
 
         [Tooltip("The amount of time we buffer a jump. This allows jump input before actually hitting the ground")]
         public float JumpBuffer = .2f;
+        [Tooltip("The player's amount of max Double Jump")]
+        public int DoubleJump = 2;
     }
 }

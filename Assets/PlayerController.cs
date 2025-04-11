@@ -1,15 +1,9 @@
 using System;
 using UnityEngine;
 
-namespace TarodevController
+namespace Controller
 {
-    /// <summary>
-    /// Hey!
-    /// Tarodev here. I built this controller as there was a severe lack of quality & free 2D controllers out there.
-    /// I have a premium version on Patreon, which has every feature you'd expect from a polished controller. Link: https://www.patreon.com/tarodev
-    /// You can play and compete for best times here: https://tarodev.itch.io/extended-ultimate-2d-controller
-    /// If you hve any questions or would like to brag about your score, come to discord: https://discord.gg/tarodev
-    /// </summary>
+   
     [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
     public class PlayerController : MonoBehaviour, IPlayerController
     {
@@ -89,6 +83,16 @@ namespace TarodevController
             // Ground and Ceiling
             bool groundHit = Physics2D.BoxCast(_col.bounds.center, _col.size, 0f, Vector2.down, _stats.GrounderDistance, ~_stats.PlayerLayer);
             bool ceilingHit = Physics2D.BoxCast(_col.bounds.center, _col.size, 0f, Vector2.up, _stats.GrounderDistance, ~_stats.PlayerLayer);
+            {
+                if (groundHit)
+                {
+                    Debug.DrawRay(_col.bounds.center, Vector2.down * _stats.GrounderDistance, Color.green);
+                }
+                else
+                {
+                    Debug.DrawRay(_col.bounds.center, Vector2.down * _stats.GrounderDistance, Color.red);
+                }
+            }
 
             // Hit a Ceiling
             if (ceilingHit) _frameVelocity.y = Mathf.Min(0, _frameVelocity.y);
@@ -100,6 +104,7 @@ namespace TarodevController
                 _coyoteUsable = true;
                 _bufferedJumpUsable = true;
                 _endedJumpEarly = false;
+                _jumpsLeft = _stats.DoubleJump;
                 GroundedChanged?.Invoke(true, Mathf.Abs(_frameVelocity.y));
             }
             // Left the Ground
@@ -122,6 +127,7 @@ namespace TarodevController
         private bool _bufferedJumpUsable;
         private bool _endedJumpEarly;
         private bool _coyoteUsable;
+        private int _jumpsLeft;
         private float _timeJumpWasPressed;
 
         private bool HasBufferedJump => _bufferedJumpUsable && _time < _timeJumpWasPressed + _stats.JumpBuffer;
@@ -133,7 +139,7 @@ namespace TarodevController
 
             if (!_jumpToConsume && !HasBufferedJump) return;
 
-            if (_grounded || CanUseCoyote) ExecuteJump();
+            if (_grounded || CanUseCoyote || _jumpsLeft > 0) ExecuteJump();
 
             _jumpToConsume = false;
         }
@@ -144,6 +150,7 @@ namespace TarodevController
             _timeJumpWasPressed = 0;
             _bufferedJumpUsable = false;
             _coyoteUsable = false;
+            _jumpsLeft--;
             _frameVelocity.y = _stats.JumpPower;
             Jumped?.Invoke();
         }

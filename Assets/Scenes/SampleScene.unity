@@ -266,7 +266,6 @@ GameObject:
   - component: {fileID: 492364158}
   - component: {fileID: 492364157}
   - component: {fileID: 492364156}
-  - component: {fileID: 492364155}
   - component: {fileID: 492364161}
   m_Layer: 0
   m_Name: Player
@@ -275,26 +274,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &492364155
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 492364154}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 678567931943ebc478ac8a597ec2c6b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 492364158}
-  moveSpeed: 8
-  horizontalMovement: 0
-  jumpPower: 10
-  groundCheckPos: {fileID: 609087914}
-  groundCheckSize: {x: 0.5, y: 0.05}
-  groundLayer:
-    m_Bits: 8
 --- !u!114 &492364156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -322,7 +301,7 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 492364155}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
         m_MethodName: Move
         m_Mode: 0
@@ -350,7 +329,7 @@ MonoBehaviour:
     m_ActionName: 'Player/Crouch[/Keyboard/c]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 492364155}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
         m_MethodName: Jump
         m_Mode: 0
